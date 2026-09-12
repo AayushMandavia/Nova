@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="100%" height="100%" fill="none">
+  <!-- Outer Circular Ring (The 'O') -->
+  <circle cx="100" cy="100" r="46" stroke="#ffffff" stroke-width="5.5" stroke-linecap="round"/>
+  
+  <!-- The Iconic Nova Starburst Emblem (Clean White Outline) -->
+  <path d="
+    M 100,14
+    L 106,72
+    L 126,52
+    L 115,82
+    L 192,102
+    L 115,108
+    L 104,168
+    L 100,172
+    L 96,168
+    L 85,108
+    L 8,102
+    L 85,82
+    L 74,52
+    L 94,72
+    Z
+  " fill="#ffffff" stroke="#ffffff" stroke-width="2.5" stroke-linejoin="round"/>
+</svg>
