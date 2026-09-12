@@ -99,23 +99,23 @@ export async function handleChatRequest(req, res) {
         'x-openai-key-present': hasOpenAI ? 'true' : 'false',
       })
 
-      // 1. Try OpenAI if key is present
-      if (hasOpenAI) {
-        try {
-          const success = await streamOpenAI(res, messages, openaiKey)
-          if (success) return
-        } catch (err) {
-          console.warn('OpenAI API call failed, attempting fallback:', err.message)
-        }
-      }
-
-      // 2. Try Gemini if key is present
+      // 1. Try Gemini first (high performance, generous limits)
       if (hasGemini) {
         try {
           const success = await streamGemini(res, messages, geminiKey)
           if (success) return
         } catch (err) {
-          console.warn('Gemini API call failed, attempting fallback to local engine:', err.message)
+          console.warn('Gemini API call failed, attempting OpenAI fallback:', err.message)
+        }
+      }
+
+      // 2. Try OpenAI if Gemini failed or key missing
+      if (hasOpenAI) {
+        try {
+          const success = await streamOpenAI(res, messages, openaiKey)
+          if (success) return
+        } catch (err) {
+          console.warn('OpenAI API call failed, attempting fallback to local engine:', err.message)
         }
       }
 
