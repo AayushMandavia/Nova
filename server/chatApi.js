@@ -95,6 +95,8 @@ export async function handleChatRequest(req, res) {
         'Cache-Control': 'no-cache, no-transform',
         Connection: 'keep-alive',
         'Access-Control-Allow-Origin': '*',
+        'x-gemini-key-present': hasGemini ? 'true' : 'false',
+        'x-openai-key-present': hasOpenAI ? 'true' : 'false',
       })
 
       // 1. Try OpenAI if key is present
